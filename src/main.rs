@@ -178,7 +178,9 @@ struct Dict{
 #[tokio::main]
 async fn main()->Result<()> {
     let args:Vec<String> = std::env::args().collect();
+    // println!("{:?}", args);
     let words = &args[1..];
+    // println!("{:?}", words);
     let mut input  = String::from("");
     for word in words{
         input.push_str(word);
@@ -188,7 +190,7 @@ async fn main()->Result<()> {
     // let input = "good";
     let input_2 = input.clone();
     let iciba_task = tokio::spawn(async move {iciba(input_2).await});
-    youdao(&input).await?;
+    // youdao(&input).await?;
     iciba_task.await?;
     Ok(())
 }
